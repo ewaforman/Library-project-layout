@@ -1,5 +1,10 @@
 @import "~normalize.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+@import "modules/students.scss";
+@import "modules/books.scss";
+
 html {
   box-sizing: border-box;
 }
@@ -13,6 +18,7 @@ html {
 body {
   background: gray;
   color: #fff;
+  font-family: Nunito;
 }
 
 .navigation {
@@ -28,38 +34,8 @@ body {
     margin-right: 20px;
     font-size: 40px;
     font-weight: bold;
+    text-decoration: none;
   }
 }
 
-.student {
-  display: flex;
-  justify-content: center;
-  &__all {
-    list-style: decimal;
-  }
-  &__header {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 40px;
-  }
-  &__showAll {
-    width: 1000px;
-    background: rgb(121, 121, 121);
-    margin-top: 50px;
-  }
-}
 
-.project__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 100px;
-  margin: 0 0 8px 0;
-  column-gap: 8px;
-  &-headers {
-    font-weight: bold;
-    text-decoration: underline;
-    font-size: 20px;
-  }
-  &-hover:hover {
-    color: yellow;
-  }
-}

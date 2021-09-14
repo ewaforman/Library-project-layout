@@ -1,5 +1,70 @@
 import "../scss/main.scss";
 
+// get all students
+fetch("http://127.0.0.1:5000/get_all_students")
+  .then((resp) => resp.json())
+  .then((resp) => {
+    for (let repo of resp) {
+      const { name, surname, username, id } = repo;
+      const repositryList = document.querySelector(".list--js");
+
+      const myTemplate = `<li> <p class="project__grid project__grid-hover">
+      <span> ${id} </span>
+       <span> ${name} </span>
+       <span> ${surname} </span>
+       <span> ${username} </span>
+     </p> </li>`;
+      repositryList.innerHTML += myTemplate;
+    }
+  })
+  .catch((error) => {
+    console.log("nie udalo sie pobrac");
+  });
+
+  // get all books
+  fetch("http://127.0.0.1:5000/get_all_books")
+  .then((resp) => resp.json())
+  .then((resp) => {
+    for (let repo of resp) {
+      const { name, surname, title, status, id } = repo;
+      const repositryList = document.querySelector(".books__all-js");
+
+      const myTemplate = `<td>${id}</td> <td>${name}</td> <td>${surname}</td> <td>${title}</td> <td>${status}</td>`;
+      repositryList.innerHTML += myTemplate;
+    }
+  })
+  .catch((error) => {
+    console.log("nie udalo sie pobrac");
+  });
+
+// get number of students
+fetch("http://127.0.0.1:5000/count_all_students")
+.then((resp) => resp.json())
+.then((resp) => {
+    const { number} = resp;
+    console.log(number)
+    const repositryList = document.querySelector(".studentButtons__number-all");
+
+    const myTemplate = `${number}`;
+    repositryList.innerHTML += myTemplate;
+})
+.catch((error) => {
+  console.log("nie udalo sie pobrac liczby studentów");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // // fetch("http://localhost:5000/add_student")
 // //   .then((res) => res.json())
 // //   .then((res) => {
@@ -172,31 +237,5 @@ import "../scss/main.scss";
 
 // button.addEventListener("click", postData);
 
-const headers = `<p class="project__grid project__grid-headers">
-       <span> Imię </span>
-       <span> Nazwisko </span>
-       <span> Username </span>
-       <span> ID </span>
-     </p>`;
-const repositryList = document.querySelector(".list--js");
-repositryList.innerHTML += headers;
 
-fetch("http://127.0.0.1:5000/get_all_students")
-  .then((resp) => resp.json())
-  .then((resp) => {
-    for (let repo of resp) {
-      const { name, surname, username, id } = repo;
-      const repositryList = document.querySelector(".list--js");
 
-      const myTemplate = `<li> <p class="project__grid project__grid-hover">
-       <span> ${name} </span>
-       <span> ${surname} </span>
-       <span> ${username} </span>
-       <span> ${id} </span>
-     </p> </li>`;
-      repositryList.innerHTML += myTemplate;
-    }
-  })
-  .catch((error) => {
-    console.log("nie udalo sie pobrac");
-  });
