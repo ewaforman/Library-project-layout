@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  background: gray;
+  background: rgb(250, 247, 247);
   color: #fff;
   font-family: Nunito;
 }
@@ -24,6 +24,7 @@ body {
 .navigation {
   background-color: white;
   padding: 16px;
+  width: 100%;
   border-radius: 8px;
   display: flex;
   justify-content: space-around;
@@ -32,10 +33,17 @@ body {
     color: black;
     display: inline-block;
     margin-right: 20px;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     text-decoration: none;
   }
 }
+
+.table__header {
+  color: black;
+  text-align: center;
+}
+
+
 
 

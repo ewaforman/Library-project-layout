@@ -9,93 +9,114 @@
     <meta property="og:description" content="Library-project" />
     <meta property="og:url" content="" />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="./src/js/index.js"></script> -->
 
+    <script>
+      function addStudentToDataBase(e, form) {
+        fetch(form.action, {
+          method: "post",
+          body: new FormData(form),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            const content = res;
+            console.log(content);
+          });
+        console.log("sukces");
+        e.preventDefault();
+      }
+    </script>
   </head>
   <body>
-
-    <!-- <form method="POST" action="myapi/send" onsubmit="send(event,this)">
-      <input hidden name="csrfToken" value="a1e24s1">
-      <input name="email" value="a@b.com">
-      <input name="phone" value="123-456-789">
-      <input type="submit">    
-  </form> -->
-<header>
-  <div class="menu">
-    <nav class="navigation">
-      <a class="navigation__link" href="index.html">Studenci</a>
-      <a class="navigation__link" href="books.html">Książki</a>
-      <a class="navigation__link" href="hires.html">Wypożyczenia</a>
-    </nav>
-  </div>
-</header>
-<main>
-  <section class="studentButtons">
-    <button type="button" class="btn btn-secondary studentButtons__number">Dodaj studenta</button>
-    <button type="button" class="btn btn-secondary studentButtons__number">Zmodyfikuj studenta</button>
-    <button type="button" class="btn btn-secondary studentButtons__number">Usuń studenta</button>
-    <button type="button" class="btn btn-secondary studentButtons__number">Wyszukaj studenta</button>
-    <button type="button" class="btn btn-secondary studentButtons__number">Liczba studentów w bazie: 
-    <span class="studentButtons__number-all"></span></button>
-  </section>
-  <section class="student">
-    <div class="student__showAll">
-      <h1 class="student__header">Lista studentów</h1>
-    <ul class="student__all list--js">
-      <p class="project__grid project__grid-headers">
-        <span> Id </span>
-        <span> Imię </span>
-        <span> Nazwisko </span>
-        <span> Użytkownik </span>
-      </p>
-    </ul>
-  </div>
-  
-
-
-      <!-- <form method="POST" action='http://localhost:5000/add_student' class="form" id="form" onsubmit="send(event,this)" >
-        <p>
-          <label for="name"> Student's name: </label>
-          <input class="form__item" type="text" placeholder="Please enter name" id="name" name="name">
-        </p>
-        <p>
-          <label> Student's surname: 
-          <input class="form__item" placeholder="Please enter surname" id="surname" name="surname">
-        </label>
-        <p>
-          <label> Student's username: 
-          <input class="form__item" placeholder="Please enter username" id="username" name="username">
-        </label>
-        </p>
-      <p>
-        <input class="button" type="submit" name="send" value="Zapisz1">
-      </p>
-    </form>
-    <div class="test" id="testy">test </div>
-    
-    <div class="new">
-      <button class="guzik">Zapisz2</button>
-    </section>
-    <section class="section">
-      <button class="student__get-all">Pokaż listę wszystkich studentów</button>
-      <div class="showAllStudents">
-        <h1>Lista studentów</h1>
-      <ul class="list--js">
-        <li class="">test</li>
-      </ul>
-    </div>
-  </section> -->
-</main>
-
-<section class="section">
-    <div>
-      
+    <header>
+      <div class="menu">
+        <nav class="navigation">
+          <a class="navigation__link" href="index.html">Studenci</a>
+          <a class="navigation__link" href="books.html">Książki</a>
+          <a class="navigation__link" href="hires.html">Wypożyczenia</a>
+        </nav>
       </div>
-    </section>
-
-  
+    </header>
+    <main>
+      <section>
+        <h1 class="table__header">Lista studentów</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Imię</th>
+              <th scope="col">Nazwisko</th>
+              <th scope="col">Użytkownik</th>
+            </tr>
+          </thead>
+          <tbody class="student__body"></tbody>
+        </table>
+      </section>
+      <section>
+        <form
+          method="POST"
+          action="http://localhost:5000/add_student"
+          onsubmit="addStudentToDataBase(event,this)"
+        >
+          <h1 class="table__header">Dodaj studenta</h1>
+          <fieldset>
+            <div class="form-group">
+              <label for="disabledTextInput">Wpisz imię</label>
+              <input
+                type="text"
+                id="disabledTextInput"
+                class="form-control"
+                placeholder="Wpisz imię"
+                name="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="disabledTextInput">Wpisz nazwisko</label>
+              <input
+                type="text"
+                id="disabledTextInput"
+                class="form-control"
+                placeholder="Wpisz nazwisko"
+                name="surname"
+              />
+            </div>
+            <div class="form-group">
+              <label for="disabledTextInput">Wpisz nazwę Użytkownika</label>
+              <input
+                type="text"
+                id="disabledTextInput"
+                class="form-control"
+                placeholder="Wpisz nazwę użytkownika"
+                name="username"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Dodaj studenta
+            </button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

@@ -21,21 +21,20 @@
         </div>
       </header>
       <main>
-        <section class="books">
-          <div class="books__showAll">
-            <h1 class="books__header">Lista książek</h1>
-            <table class="books__all books__all-js">
-              <thead>
-                 <tr>
-                  <th>ID</th> <th>Imię</th> <th>Nazwisko</th> <th>Tytuł</th> <th>Status</th> 
-                 </tr>
-              </thead>
-              <tbody>
-                 <tr>   
-                 </tr>
-              </tbody>
-           </table>
-        </div>
-      </main>      
+        <h1 class="table__header">Lista książek</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">name</th>
+              <th scope="col">surname</th>
+              <th scope="col">title</th>
+              <th scope="col">status</th>
+            </tr>
+          </thead>
+          <tbody class="book__body"> 
+          </tbody>
+        </table>
+      </main> 
 </body>
 </html>

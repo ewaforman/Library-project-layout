@@ -6,14 +6,13 @@ fetch("http://127.0.0.1:5000/get_all_students")
   .then((resp) => {
     for (let repo of resp) {
       const { name, surname, username, id } = repo;
-      const repositryList = document.querySelector(".list--js");
+      const repositryList = document.querySelector(".student__body");
 
-      const myTemplate = `<li> <p class="project__grid project__grid-hover">
-      <span> ${id} </span>
-       <span> ${name} </span>
-       <span> ${surname} </span>
-       <span> ${username} </span>
-     </p> </li>`;
+      const myTemplate = `<tr>
+      <td>${id}</td>
+      <td>${name}</td>
+      <td>${surname}</td>
+      <td>${username}</td>`;
       repositryList.innerHTML += myTemplate;
     }
   })
@@ -27,14 +26,19 @@ fetch("http://127.0.0.1:5000/get_all_students")
   .then((resp) => {
     for (let repo of resp) {
       const { name, surname, title, status, id } = repo;
-      const repositryList = document.querySelector(".books__all-js");
+      const repositryList = document.querySelector(".book__body");
 
-      const myTemplate = `<td>${id}</td> <td>${name}</td> <td>${surname}</td> <td>${title}</td> <td>${status}</td>`;
+      const myTemplate = `<tr>
+      <td>${id}</td>
+      <td>${name}</td>
+      <td>${surname}</td>
+      <td>${title}</td>
+      <td>${status}</td>`;
       repositryList.innerHTML += myTemplate;
     }
   })
   .catch((error) => {
-    console.log("nie udalo sie pobrac");
+    console.log("nie udalo sie pobrac ksiazek");
   });
 
 // get number of students
@@ -52,7 +56,33 @@ fetch("http://127.0.0.1:5000/count_all_students")
   console.log("nie udalo sie pobrac liczby studentów");
 });
 
+// get all hires
+fetch("http://127.0.0.1:5000/get_all_hires")
+.then((resp) => resp.json())
+.then((resp) => {
+  for (let repo of resp) {
+    const { id_book, id_student, date_hire, date_return, id, student_name, student_surname,
+      author_name, author_surname, title} = repo;
+    const repositryList = document.querySelector(".hire__body");
 
+    const myTemplate = `<tr>
+    <td>${id}</td>
+    <td>${student_name}</td>
+    <td>${student_surname}</td>
+    <td>${id_student}</td>
+    <td>${author_name}</td>
+    <td>${author_surname}</td>
+    <td>${title}</td>
+    <td>${id_book}</td>
+    <td>${date_hire}</td>
+    <td>${date_return}</td>
+  </tr>`;
+    repositryList.innerHTML += myTemplate;
+  }
+})
+.catch((error) => {
+  console.log("nie udalo sie pobrac");
+});
 
 
 
@@ -174,10 +204,13 @@ fetch("http://127.0.0.1:5000/count_all_students")
 
 // const button = document.querySelector(".guzik");
 
-// function send(e, form) {
-//   fetch(form.action, { method: "post" });
+// function send123(e, form) {
+//   console.log("DUPA")
+
+//   // fetch(form.action, { method: "post" });
 //   const response = fetch(form.action, {
 //     method: "POST", // *GET, POST, PUT, DELETE, etc.
+//     redirect: "manual",
 //     // mode: 'cors', // no-cors, *cors, same-origin
 //     // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
 //     // credentials: 'same-origin', // include, *same-origin, omit
