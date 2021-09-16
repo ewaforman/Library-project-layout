@@ -1,5 +1,9 @@
 import "../scss/main.scss";
 
+function dupa(){
+  console.log("dupaa")
+}
+
 // get all students
 fetch("http://127.0.0.1:5000/get_all_students")
   .then((resp) => resp.json())
@@ -47,10 +51,10 @@ fetch("http://127.0.0.1:5000/count_all_students")
 .then((resp) => {
     const { number} = resp;
     console.log(number)
-    const repositryList = document.querySelector(".studentButtons__number-all");
+    const repositryList = document.querySelector(".student__number");
 
     const myTemplate = `${number}`;
-    repositryList.innerHTML += myTemplate;
+    repositryList.innerHTML = myTemplate;
 })
 .catch((error) => {
   console.log("nie udalo sie pobrac liczby studentów");

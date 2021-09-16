@@ -46,6 +46,51 @@
         console.log("sukces");
         e.preventDefault();
       }
+
+      function select_student_by_username(e, form) {
+        fetch(form.action, {
+          method: "post",
+          body: new FormData(form),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+              const { name, surname, username, id } = resp;
+              const repositryList = document.querySelector(".student__body");
+
+              const myTemplate = `<tr>
+      <td>${id}</td>
+      <td>${name}</td>
+      <td>${surname}</td>
+      <td>${username}</td>`;
+              repositryList.innerHTML = myTemplate;
+            }
+          )
+          .catch((error) => {
+            console.log("nie udalo sie pobrac tego studenta");
+          });
+        e.preventDefault();
+      }
+
+      function delete_student(e, form) {
+        fetch(form.action, {
+          method: "delete",
+          body: new FormData(form),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+              const { message } = resp;
+              const repositryList = document.querySelector(".student__body");
+              console.log(message)
+
+              
+              repositryList.innerHTML = message;
+            }
+          )
+          .catch((error) => {
+            console.log("nie udalo sie usunąć tego studenta");
+          });
+        e.preventDefault();
+      }
     </script>
   </head>
   <body>
@@ -59,63 +104,100 @@
       </div>
     </header>
     <main>
-      <section>
-        <h1 class="table__header">Lista studentów</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Imię</th>
-              <th scope="col">Nazwisko</th>
-              <th scope="col">Użytkownik</th>
-            </tr>
-          </thead>
-          <tbody class="student__body"></tbody>
-        </table>
+      <section class="library">
+        <h1 class="table__header">Lista wszystkich studentów (<span class="student__number">...</span>)</h1>
+        <article class="library__conteiner">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Imię</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Użytkownik</th>
+              </tr>
+            </thead>
+            <tbody class="student__body"></tbody>
+          </table>
+        </article>
       </section>
-      <section>
-        <form
-          method="POST"
-          action="http://localhost:5000/add_student"
-          onsubmit="addStudentToDataBase(event,this)"
-        >
-          <h1 class="table__header">Dodaj studenta</h1>
-          <fieldset>
-            <div class="form-group">
-              <label for="disabledTextInput">Wpisz imię</label>
-              <input
-                type="text"
-                id="disabledTextInput"
-                class="form-control"
-                placeholder="Wpisz imię"
-                name="name"
-              />
-            </div>
-            <div class="form-group">
-              <label for="disabledTextInput">Wpisz nazwisko</label>
-              <input
-                type="text"
-                id="disabledTextInput"
-                class="form-control"
-                placeholder="Wpisz nazwisko"
-                name="surname"
-              />
-            </div>
-            <div class="form-group">
-              <label for="disabledTextInput">Wpisz nazwę Użytkownika</label>
-              <input
-                type="text"
-                id="disabledTextInput"
-                class="form-control"
-                placeholder="Wpisz nazwę użytkownika"
-                name="username"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary">
-              Dodaj studenta
-            </button>
-          </fieldset>
-        </form>
+      <section class="library">
+        <h1 class="table__header">Dodaj studenta</h1>
+        <article class="library__conteiner">
+          <form
+            class="form-inline"
+            method="POST"
+            action="http://localhost:5000/add_student"
+            onsubmit="addStudentToDataBase(event,this)"
+          >
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Imię"
+              name="name"
+            />
+            <label class="sr-only" for="inlineFormInputName2">Surname</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Nazwisko"
+              name="surname"
+            />
+            <label class="sr-only" for="inlineFormInputName2">Username</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Nazwa użytkownika"
+              name="username"
+            />
+            <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
+          </form>
+        </article>
+      </section>
+      <section class="library">
+        <h1 class="table__header">Wyszukaj studenta</h1>
+        <article class="library__conteiner">
+          <form
+            class="form-inline"
+            method="POST"
+            action="http://localhost:5000/select_student_by_username"
+            onsubmit="select_student_by_username(event,this)"
+          >
+            <label class="sr-only" for="inlineFormInputName2">Username</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Nazwa użytkownika"
+              name="username"
+            />
+            <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+          </form>
+        </article>
+      </section>
+      <section class="library">
+        <h1 class="table__header">Usuń studenta</h1>
+        <article class="library__conteiner">
+          <form
+            class="form-inline"
+            method="DELETE"
+            action="http://localhost:5000/delete_student"
+            onsubmit="delete_student(event,this)"
+          >
+            <label class="sr-only" for="inlineFormInputName2">Id</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Id studenta"
+              name="id"
+            />
+            <button type="submit" class="btn btn-primary mb-2">Usuń</button>
+          </form>
+        </article>
       </section>
     </main>
   </body>
