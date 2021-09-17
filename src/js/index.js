@@ -53,7 +53,7 @@ fetch("http://127.0.0.1:5000/count_all_students")
     console.log(number)
     const repositryList = document.querySelector(".student__number");
 
-    const myTemplate = `${number}`;
+    const myTemplate = `(${number})`;
     repositryList.innerHTML = myTemplate;
 })
 .catch((error) => {
@@ -86,6 +86,21 @@ fetch("http://127.0.0.1:5000/get_all_hires")
 })
 .catch((error) => {
   console.log("nie udalo sie pobrac");
+});
+
+// get number of books
+fetch("http://127.0.0.1:5000/count_all_books")
+.then((resp) => resp.json())
+.then((resp) => {
+    const { number} = resp;
+    console.log(number)
+    const repositryList = document.querySelector(".books__number");
+
+    const myTemplate = `(${number})`;
+    repositryList.innerHTML = myTemplate;
+})
+.catch((error) => {
+  console.log("nie udalo sie pobrac liczby książęk");
 });
 
 
