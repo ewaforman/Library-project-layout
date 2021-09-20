@@ -34,8 +34,11 @@
         })
           .then((res) => res.json())
           .then((res) => {
-            const content = res;
-            console.log(content);
+            const { message } = res;
+            const repositryList = document.querySelector(".answer__add-book");
+            console.log(message);
+
+            repositryList.innerHTML = message;
           });
         console.log("sukces");
         e.preventDefault();
@@ -49,7 +52,9 @@
           .then((resp) => resp.json())
           .then((resp) => {
             const { message } = resp;
-            const repositryList = document.querySelector(".book__body");
+            const repositryList = document.querySelector(
+              ".answer__delete-book"
+            );
             console.log(message);
 
             repositryList.innerHTML = message;
@@ -103,7 +108,9 @@
     </header>
     <main>
       <section class="library">
-        <h1 class="table__header">Lista książek <span class="books__number"></span></h1>
+        <h1 class="table__header">
+          Lista książek <span class="books__number"></span>
+        </h1>
         <article class="library__conteiner">
           <table class="table table-striped">
             <thead>
@@ -155,6 +162,7 @@
             <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
           </form>
         </article>
+        <p class="answer answer__add-book"></p>
       </section>
       <section class="library">
         <h1 class="table__header">Wyszukaj książki</h1>
@@ -213,6 +221,7 @@
             <button type="submit" class="btn btn-primary mb-2">Usuń</button>
           </form>
         </article>
+        <p class="answer answer__delete-book"></p>
       </section>
     </main>
   </body>

@@ -1,49 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wypożyczenia</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function addHireToDataBase(e, form) {
+        fetch(form.action, {
+          method: "post",
+          body: new FormData(form),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            const { message } = resp;
+            const repositryList = document.querySelector(".answer__hire");
+            console.log(message);
+
+            repositryList.innerHTML = message;
+            //           const {
+            //             id_book,
+            //             id_student,
+            //             date_hire,
+            //             date_return,
+            //             id,
+            //             student_name,
+            //             student_surname,
+            //             author_name,
+            //             author_surname,
+            //             title,
+            //           } = resp;
+            //           const repositryList = document.querySelector(".hire__body");
+
+            //           const myTemplate = `<tr>
+            //   <td>${id}</td>
+            //   <td>${student_name}</td>
+            //   <td>${student_surname}</td>
+            //   <td>${id_student}</td>
+            //   <td>${author_name}</td>
+            //   <td>${author_surname}</td>
+            //   <td>${title}</td>
+            //   <td>${id_book}</td>
+            //   <td>${date_hire}</td>
+            //   <td>${date_return}</td>
+            // </tr>`;
+            //           repositryList.innerHTML = myTemplate;
+          })
+          .catch((error) => {
+            console.log("nie udalo sie dodac wypozyczenia");
+          });
+        e.preventDefault();
+      }
+
+      function addHireReturnToDataBase(e, form) {
+        fetch(form.action, {
+          method: "post",
+          body: new FormData(form),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            const { message } = resp;
+            const repositryList = document.querySelector(".answer__return");
+            console.log(message);
+
+            repositryList.innerHTML = message;
+          })
+          .catch((error) => {
+            console.log("nie udalo sie dodac zwortu");
+          });
+        e.preventDefault();
+      }
+    </script>
+  </head>
+  <body>
     <header>
-        <div class="menu">
-          <nav class="navigation">
-            <a class="navigation__link" href="index.html">Studenci</a>
-            <a class="navigation__link" href="books.html">Książki</a>
-            <a class="navigation__link" href="hires.html">Wypożyczenia</a>
-          </nav>
-        </div>
-      </header>
-      <main class="hire">
-        <section class="library">
+      <div class="menu">
+        <nav class="navigation">
+          <a class="navigation__link" href="index.html">Studenci</a>
+          <a class="navigation__link" href="books.html">Książki</a>
+          <a class="navigation__link" href="hires.html">Wypożyczenia</a>
+        </nav>
+      </div>
+    </header>
+    <main class="hire">
+      <section class="library">
         <h1 class="table__header">Lista wypożyczeń</h1>
         <article class="library__conteiner">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Id wypożyczenia</th>
-              <th scope="col">Imię studenta</th>
-              <th scope="col">Nazwisko studenta</th>
-              <th scope="col">Id studenta</th>
-              <th scope="col">Imię autora</th>
-              <th scope="col">Nazwisko autora</th>
-              <th scope="col">Tytuł książki</th>
-              <th scope="col">Id książki</th>
-              <th scope="col">Data wypożyczenia</th>
-              <th scope="col">Data zwrotu</th>
-            </tr>
-          </thead>
-          <tbody class="hire__body"> 
-          </tbody>
-        </table>
-      </article>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Id wypożyczenia</th>
+                <th scope="col">Imię studenta</th>
+                <th scope="col">Nazwisko studenta</th>
+                <th scope="col">Id studenta</th>
+                <th scope="col">Imię autora</th>
+                <th scope="col">Nazwisko autora</th>
+                <th scope="col">Tytuł książki</th>
+                <th scope="col">Id książki</th>
+                <th scope="col">Data wypożyczenia</th>
+                <th scope="col">Data zwrotu</th>
+              </tr>
+            </thead>
+            <tbody class="hire__body"></tbody>
+          </table>
+        </article>
       </section>
-      </main>
-</body>
+      <section class="library">
+        <h1 class="table__header">Wypożycz książkę</h1>
+        <article class="library__conteiner">
+          <form
+            class="form-inline"
+            method="POST"
+            action="http://localhost:5000/add_hire"
+            onsubmit="addHireToDataBase(event,this)"
+          >
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Id książki"
+              name="id_book"
+            />
+            <label class="sr-only" for="inlineFormInputName2">Surname</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Id studenta"
+              name="id_student"
+            />
+            <label class="sr-only" for="inlineFormInputName2">Title</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Data wypożyczenia"
+              name="date_hire"
+            />
+            <button type="submit" class="btn btn-primary mb-2">Dodaj</button>
+          </form>
+        </article>
+        <p class="answer answer__hire"></p>
+      </section>
+      <section class="library">
+        <h1 class="table__header">Oddaj książkę</h1>
+        <article class="library__conteiner">
+          <form
+            class="form-inline"
+            method="POST"
+            action="http://localhost:5000/return_hire"
+            onsubmit="addHireReturnToDataBase(event,this)"
+          >
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Id książki"
+              name="id_book"
+            />
+            <label class="sr-only" for="inlineFormInputName2"
+              >Data zwrotu</label
+            >
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="inlineFormInputName2"
+              placeholder="Data zwrotu"
+              name="date_return"
+            />
+            <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
+          </form>
+        </article>
+        <p class="answer answer__return"></p>
+      </section>
+    </main>
+  </body>
 </html>

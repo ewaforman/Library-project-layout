@@ -40,8 +40,11 @@
         })
           .then((res) => res.json())
           .then((res) => {
-            const content = res;
-            console.log(content);
+            const { message } = res;
+            const repositryList = document.querySelector(".answer__add");
+            console.log(message);
+
+            repositryList.innerHTML = message;
           });
         console.log("sukces");
         e.preventDefault();
@@ -54,17 +57,16 @@
         })
           .then((resp) => resp.json())
           .then((resp) => {
-              const { name, surname, username, id } = resp;
-              const repositryList = document.querySelector(".student__body");
+            const { name, surname, username, id } = resp;
+            const repositryList = document.querySelector(".student__body");
 
-              const myTemplate = `<tr>
+            const myTemplate = `<tr>
       <td>${id}</td>
       <td>${name}</td>
       <td>${surname}</td>
       <td>${username}</td>`;
-              repositryList.innerHTML = myTemplate;
-            }
-          )
+            repositryList.innerHTML = myTemplate;
+          })
           .catch((error) => {
             console.log("nie udalo sie pobrac tego studenta");
           });
@@ -78,14 +80,12 @@
         })
           .then((resp) => resp.json())
           .then((resp) => {
-              const { message } = resp;
-              const repositryList = document.querySelector(".student__body");
-              console.log(message)
+            const { message } = resp;
+            const repositryList = document.querySelector(".answer__delete");
+            console.log(message);
 
-              
-              repositryList.innerHTML = message;
-            }
-          )
+            repositryList.innerHTML = message;
+          })
           .catch((error) => {
             console.log("nie udalo sie usunąć tego studenta");
           });
@@ -105,7 +105,9 @@
     </header>
     <main>
       <section class="library">
-        <h1 class="table__header">Lista wszystkich studentów <span class="student__number"></span></h1>
+        <h1 class="table__header">
+          Lista wszystkich studentów <span class="student__number"></span>
+        </h1>
         <article class="library__conteiner">
           <table class="table table-striped">
             <thead>
@@ -156,6 +158,7 @@
             <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
           </form>
         </article>
+        <p class="answer answer__add"></p>
       </section>
       <section class="library">
         <h1 class="table__header">Wyszukaj studenta</h1>
@@ -198,6 +201,7 @@
             <button type="submit" class="btn btn-primary mb-2">Usuń</button>
           </form>
         </article>
+        <p class="answer answer__delete"></p>
       </section>
     </main>
   </body>
