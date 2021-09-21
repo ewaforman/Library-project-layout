@@ -70,14 +70,11 @@ fetch("http://127.0.0.1:5000/get_all_hires")
     const repositryList = document.querySelector(".hire__body");
 
     const myTemplate = `<tr>
-    <td>${id}</td>
     <td>${student_name}</td>
     <td>${student_surname}</td>
-    <td>${id_student}</td>
     <td>${author_name}</td>
     <td>${author_surname}</td>
     <td>${title}</td>
-    <td>${id_book}</td>
     <td>${date_hire}</td>
     <td>${date_return}</td>
   </tr>`;

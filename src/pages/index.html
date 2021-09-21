@@ -94,7 +94,126 @@
     </script>
   </head>
   <body>
-    <header>
+    <div class="conteiner">
+      <div class="navigation row">
+        <div class="col-sm">
+          <a class="navigation__link" href="index.html">Studenci</a>
+        </div>
+        <div class="col-sm">
+          <a class="navigation__link" href="books.html">Książki</a>
+        </div>
+        <div class="col-sm">
+          <a class="navigation__link" href="hires.html">Wypożyczenia</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12 col-sm-9">
+        <section class="library">
+        <h1 class="table__header-main">
+          Lista wszystkich studentów <span class="student__number"></span>
+        </h1>
+        <article class="library__conteiner">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Imię</th>
+              <th scope="col">Nazwisko</th>
+              <th scope="col">Użytkownik</th>
+            </tr>
+          </thead>
+          <tbody class="student__body"></tbody>
+        </table>
+      </article>
+      </section>
+      </div>
+      <div class="col-12 col-sm-3">
+        <section class="library">
+          <h1 class="table__header">Dodaj studenta</h1>
+          <article class="library__forms">
+            <form
+              class=""
+              method="POST"
+              action="http://localhost:5000/add_student"
+              onsubmit="addStudentToDataBase(event,this)"
+            >
+              <label class="sr-only" for="inlineFormInputName2">Name</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Imię"
+                name="name"
+              />
+              <label class="sr-only" for="inlineFormInputName2">Surname</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Nazwisko"
+                name="surname"
+              />
+              <label class="sr-only" for="inlineFormInputName2">Username</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Nazwa użytkownika"
+                name="username"
+              />
+              <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
+            </form>
+          </article>
+          <p class="answer answer__add"></p>
+        </section>
+        <section class="library">
+          <h1 class="table__header">Wyszukaj studenta</h1>
+          <article class="library__forms">
+            <form
+              class=""
+              method="POST"
+              action="http://localhost:5000/select_student_by_username"
+              onsubmit="select_student_by_username(event,this)"
+            >
+              <label class="sr-only" for="inlineFormInputName2">Username</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Nazwa użytkownika"
+                name="username"
+              />
+              <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+            </form>
+          </article>
+        </section>
+        <section class="library">
+          <h1 class="table__header">Usuń studenta</h1>
+          <article class="library__forms">
+            <form
+              class=""
+              method="DELETE"
+              action="http://localhost:5000/delete_student"
+              onsubmit="delete_student(event,this)"
+            >
+              <label class="sr-only" for="inlineFormInputName2">Id</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Id studenta"
+                name="id"
+              />
+              <button type="submit" class="btn btn-primary mb-2">Usuń</button>
+            </form>
+          </article>
+          <p class="answer answer__delete"></p>
+        </section>
+      </div>
+    </div>
+    <!-- <header>
       <div class="menu">
         <nav class="navigation">
           <a class="navigation__link" href="index.html">Studenci</a>
@@ -102,13 +221,13 @@
           <a class="navigation__link" href="hires.html">Wypożyczenia</a>
         </nav>
       </div>
-    </header>
-    <main>
-      <section class="library">
-        <h1 class="table__header">
+    </header> -->
+    <!-- <main> -->
+      <!-- <section class="library"> -->
+        <!-- <h1 class="table__header">
           Lista wszystkich studentów <span class="student__number"></span>
-        </h1>
-        <article class="library__conteiner">
+        </h1> -->
+        <!-- <article class="library__conteiner">
           <table class="table table-striped">
             <thead>
               <tr>
@@ -120,9 +239,9 @@
             </thead>
             <tbody class="student__body"></tbody>
           </table>
-        </article>
-      </section>
-      <section class="library">
+        </article> -->
+      <!-- </section> -->
+      <!-- <section class="library">
         <h1 class="table__header">Dodaj studenta</h1>
         <article class="library__conteiner">
           <form
@@ -202,7 +321,7 @@
           </form>
         </article>
         <p class="answer answer__delete"></p>
-      </section>
-    </main>
+      </section> -->
+    <!-- </main> -->
   </body>
 </html>

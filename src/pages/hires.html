@@ -94,7 +94,115 @@
     </script>
   </head>
   <body>
-    <header>
+    <div class="conteiner">
+      <div class="navigation row">
+        <div class="col-sm">
+          <a class="navigation__link" href="index.html">Studenci</a>
+        </div>
+        <div class="col-sm">
+          <a class="navigation__link" href="books.html">Książki</a>
+        </div>
+        <div class="col-sm">
+          <a class="navigation__link" href="hires.html">Wypożyczenia</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-9">
+        <section class="library">
+          <h1 class="table__header-main">Lista wypożyczeń</h1>
+          <article class="library__conteiner">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Imię studenta</th>
+                  <th scope="col">Nazwisko studenta</th>
+                  <th scope="col">Imię autora</th>
+                  <th scope="col">Nazwisko autora</th>
+                  <th scope="col">Tytuł książki</th>
+                  <th scope="col">Data wypożyczenia</th>
+                  <th scope="col">Data zwrotu</th>
+                </tr>
+              </thead>
+              <tbody class="hire__body"></tbody>
+            </table>
+          </article>
+        </section>
+      </div>
+      <div class="col-12 col-sm-3">
+        <section class="library">
+          <h1 class="table__header">Wypożycz książkę</h1>
+          <article class="library__forms">
+            <form
+              class=""
+              method="POST"
+              action="http://localhost:5000/add_hire"
+              onsubmit="addHireToDataBase(event,this)"
+            >
+              <label class="sr-only" for="inlineFormInputName2">Name</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Id książki"
+                name="id_book"
+              />
+              <label class="sr-only" for="inlineFormInputName2">Surname</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Id studenta"
+                name="id_student"
+              />
+              <label class="sr-only" for="inlineFormInputName2">Title</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Data wypożyczenia"
+                name="date_hire"
+              />
+              <button type="submit" class="btn btn-primary mb-2">Dodaj</button>
+            </form>
+          </article>
+          <p class="answer answer__hire"></p>
+        </section>
+        <section class="library">
+          <h1 class="table__header">Oddaj książkę</h1>
+          <article class="library__forms">
+            <form
+              class=""
+              method="POST"
+              action="http://localhost:5000/return_hire"
+              onsubmit="addHireReturnToDataBase(event,this)"
+            >
+              <label class="sr-only" for="inlineFormInputName2">Name</label>
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Id książki"
+                name="id_book"
+              />
+              <label class="sr-only" for="inlineFormInputName2"
+                >Data zwrotu</label
+              >
+              <input
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Data zwrotu"
+                name="date_return"
+              />
+              <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
+            </form>
+          </article>
+          <p class="answer answer__return"></p>
+        </section>
+      </div>
+    </div>
+    <!-- <header>
       <div class="menu">
         <nav class="navigation">
           <a class="navigation__link" href="index.html">Studenci</a>
@@ -102,10 +210,10 @@
           <a class="navigation__link" href="hires.html">Wypożyczenia</a>
         </nav>
       </div>
-    </header>
-    <main class="hire">
-      <section class="library">
-        <h1 class="table__header">Lista wypożyczeń</h1>
+    </header> -->
+    <!-- <main class="hire"> -->
+    <!-- <section class="library">
+        <h1 class="table__header-main">Lista wypożyczeń</h1>
         <article class="library__conteiner">
           <table class="table table-striped">
             <thead>
@@ -125,8 +233,8 @@
             <tbody class="hire__body"></tbody>
           </table>
         </article>
-      </section>
-      <section class="library">
+      </section> -->
+    <!-- <section class="library">
         <h1 class="table__header">Wypożycz książkę</h1>
         <article class="library__conteiner">
           <form
@@ -195,7 +303,7 @@
           </form>
         </article>
         <p class="answer answer__return"></p>
-      </section>
-    </main>
+      </section> -->
+    <!-- </main> -->
   </body>
 </html>
