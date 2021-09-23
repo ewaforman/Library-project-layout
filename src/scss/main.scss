@@ -21,6 +21,49 @@ body {
   font-family: Nunito;
 }
 
+.answer {
+  color: black;
+  // text-align: center;
+  font-weight: bold;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+.col {
+  &__id {
+    width: 5%;
+  }
+  &__user {
+    width: 10%;
+  }
+  &__authorSurname {
+    width: 25%;
+  }
+  &__authorName {
+    width: 20%;
+  }
+}
+
+.form-check-label {
+  color: black;
+  margin-right: 10px;
+}
+
+.library {
+  margin-bottom: 50px;
+  &__conteiner {
+    display: flex;
+    justify-content: center;
+  }
+  &__forms {
+    display: flex;
+    // justify-content: flex-start;
+    justify-content: center;
+  }
+}
+
 .navigation {
   background-color: white;
   padding: 16px;
@@ -42,39 +85,15 @@ body {
 
 .table {
   max-width: 95%;
+  &__size {
+    max-width: 50%;
+  }
   &__header {
     color: black;
-    // text-align: center;
+    text-align: center;
     &-main {
       color: black;
       text-align: center;
     }
   }
 }
-
-.library {
-  margin-bottom: 50px;
-  &__conteiner {
-    display: flex;
-    justify-content: center;
-  }
-  &__forms {
-    display: flex;
-    justify-content: flex-start;
-  }
-}
-
-.form-check-label {
-  color: black;
-  margin-right: 10px;
-}
-
-.answer {
-    color: black;
-    // text-align: center;
-    font-weight: bold;
-  }
-
-  .btn {
-    margin-top: 10px;
-  }

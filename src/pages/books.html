@@ -36,11 +36,9 @@
           .then((res) => {
             const { message } = res;
             const repositryList = document.querySelector(".answer__add-book");
-            console.log(message);
 
             repositryList.innerHTML = message;
           });
-        console.log("sukces");
         e.preventDefault();
       }
 
@@ -55,12 +53,11 @@
             const repositryList = document.querySelector(
               ".answer__delete-book"
             );
-            console.log(message);
 
             repositryList.innerHTML = message;
           })
           .catch((error) => {
-            console.log("nie udalo sie usunąć tej książki");
+            console.log("Nie udalo sie usunac tej ksiazki.");
           });
         e.preventDefault();
       }
@@ -90,7 +87,36 @@
             }
           })
           .catch((error) => {
-            console.log("nie udalo sie pobrac ksiazek");
+            console.log("Nie udalo sie pobrac ksiazek.");
+          });
+        e.preventDefault();
+      }
+      function select_book_by_id(e, form) {
+        fetch(form.action, {
+          method: "post",
+          body: new FormData(form),
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            const repositryList = document.querySelector(".book__body");
+            const myTemplateEmpty = ``;
+            repositryList.innerHTML = myTemplateEmpty;
+
+          
+              const { name, surname, title, status, id } = resp;
+
+              const myTemplate = `<tr>
+              <td>${id}</td>
+              <td>${name}</td>
+              <td>${surname}</td>
+              <td>${title}</td>
+              `;
+
+              repositryList.innerHTML += myTemplate;
+            }
+          )
+          .catch((error) => {
+            console.log("Nie udalo sie pobrac ksiazek.");
           });
         e.preventDefault();
       }
@@ -117,14 +143,13 @@
             Lista książek <span class="books__number"></span>
           </h1>
           <article class="library__conteiner">
-            <table class="table table-striped">
+            <table class="table table-striped table__size">
               <thead>
                 <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Imię</th>
-                  <th scope="col">Nazwisko</th>
+                  <th scope="col col__id">Id</th>
+                  <th scope="col col__authorName">Imię</th>
+                  <th scope="col col__authorSurname">Nazwisko</th>
                   <th scope="col">Tytuł</th>
-                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody class="book__body"></tbody>
@@ -171,43 +196,7 @@
           </article>
           <p class="answer answer__add-book"></p>
         </section>
-        <section class="library">
-          <h1 class="table__header">Wyszukaj książki</h1>
-          <article class="library__forms">
-            <form
-              class=""
-              method="POST"
-              action="http://localhost:5000/select_book_by_status"
-              onsubmit="select_book_by_status(event,this)"
-            >
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="available"
-                  id="flexCheckDefault"
-                  name="status"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Dostępne
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="hired"
-                  id="flexCheckChecked"
-                  name="status"
-                />
-                <label class="form-check-label" for="flexCheckChecked">
-                  Wypożyczone
-                </label>
-              </div>
-              <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
-            </form>
-          </article>
-        </section>
+        
         <section class="library">
           <h1 class="table__header">Usuń książkę</h1>
           <article class="library__forms">
@@ -230,134 +219,26 @@
           </article>
           <p class="answer answer__delete-book"></p>
         </section>
-      </div>
-    </div>
-    <!-- <header>
-      <div class="menu">
-        <nav class="navigation">
-          <a class="navigation__link" href="index.html">Studenci</a>
-          <a class="navigation__link" href="books.html">Książki</a>
-          <a class="navigation__link" href="hires.html">Wypożyczenia</a>
-        </nav>
-      </div>
-    </header> -->
-    <!-- <main> -->
-      <!-- <section class="library">
-        <h1 class="table__header">
-          Lista książek <span class="books__number"></span>
-        </h1>
-        <article class="library__conteiner">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Imię</th>
-                <th scope="col">Nazwisko</th>
-                <th scope="col">Tytuł</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody class="book__body"></tbody>
-          </table>
-        </article>
-      </section> -->
-      <!-- <section class="library">
-        <h1 class="table__header">Dodaj książkę</h1>
-        <article class="library__conteiner">
-          <form
-            class="form-inline"
-            method="POST"
-            action="http://localhost:5000/add_book"
-            onsubmit="addBookToDataBase(event,this)"
-          >
-            <label class="sr-only" for="inlineFormInputName2">Name</label>
-            <input
-              type="text"
-              class="form-control mb-2 mr-sm-2"
-              id="inlineFormInputName2"
-              placeholder="Imię autora"
-              name="name"
-            />
-            <label class="sr-only" for="inlineFormInputName2">Surname</label>
-            <input
-              type="text"
-              class="form-control mb-2 mr-sm-2"
-              id="inlineFormInputName2"
-              placeholder="Nazwisko autora"
-              name="surname"
-            />
-            <label class="sr-only" for="inlineFormInputName2">Title</label>
-            <input
-              type="text"
-              class="form-control mb-2 mr-sm-2"
-              id="inlineFormInputName2"
-              placeholder="Tytuł książki"
-              name="title"
-            />
-            <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
-          </form>
-        </article>
-        <p class="answer answer__add-book"></p>
-      </section>
-      <section class="library">
-        <h1 class="table__header">Wyszukaj książki</h1>
-        <article class="library__conteiner">
-          <form
-            class="form-inline"
-            method="POST"
-            action="http://localhost:5000/select_book_by_status"
-            onsubmit="select_book_by_status(event,this)"
-          >
-            <div class="form-check">
+        <section class="library">
+          <h1 class="table__header">Wyszukaj książkę</h1>
+          <article class="library__forms">
+            <form
+              class=""
+              method="POST"
+              action="http://localhost:5000/select_book_by_id"
+              onsubmit="select_book_by_id(event,this)"
+            >
+              <label class="sr-only" for="inlineFormInputName2">Id</label>
               <input
-                class="form-check-input"
-                type="radio"
-                value="available"
-                id="flexCheckDefault"
-                name="status"
+                type="text"
+                class="form-control mb-2 mr-sm-2"
+                id="inlineFormInputName2"
+                placeholder="Id książki"
+                name="id"
               />
-              <label class="form-check-label" for="flexCheckDefault">
-                Dostępne
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="hired"
-                id="flexCheckChecked"
-                name="status"
-              />
-              <label class="form-check-label" for="flexCheckChecked">
-                Wypożyczone
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
-          </form>
-        </article>
-      </section>
-      <section class="library">
-        <h1 class="table__header">Usuń książkę</h1>
-        <article class="library__conteiner">
-          <form
-            class="form-inline"
-            method="DELETE"
-            action="http://localhost:5000/delete_book"
-            onsubmit="delete_book(event,this)"
-          >
-            <label class="sr-only" for="inlineFormInputName2">Id</label>
-            <input
-              type="text"
-              class="form-control mb-2 mr-sm-2"
-              id="inlineFormInputName2"
-              placeholder="Id książki"
-              name="id"
-            />
-            <button type="submit" class="btn btn-primary mb-2">Usuń</button>
-          </form>
-        </article>
-        <p class="answer answer__delete-book"></p>
-      </section> -->
-    <!-- </main> -->
+              <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+            </form>
+          </article>
+        </section>
   </body>
 </html>
