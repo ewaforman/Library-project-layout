@@ -1,6 +1,9 @@
 import "../scss/main.scss";
 
+
+
 // get all students
+function get_all_students(){
 fetch("http://127.0.0.1:5000/get_all_students")
   .then((resp) => resp.json())
   .then((resp) => {
@@ -19,6 +22,7 @@ fetch("http://127.0.0.1:5000/get_all_students")
   .catch((error) => {
     console.log("Nie udalo sie pobrac studentow.");
   });
+}
 
 // get all books
 fetch("http://127.0.0.1:5000/get_all_books")
@@ -99,3 +103,5 @@ fetch("http://127.0.0.1:5000/count_all_books")
   .catch((error) => {
     console.log("Nie udalo sie pobrac liczby ksiazek.");
   });
+
+get_all_students()

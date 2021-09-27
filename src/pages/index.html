@@ -8,6 +8,7 @@
     <meta property="og:title" content="Library-project" />
     <meta property="og:description" content="Library-project" />
     <meta property="og:url" content="" />
+    <!-- <meta http-equiv="refresh" content="30"> -->
 
     <link
       rel="stylesheet"
@@ -87,6 +88,7 @@
             console.log("Nie udalo sie usunąć tego studenta.");
           });
         e.preventDefault();
+        
       }
     </script>
   </head>
@@ -135,6 +137,7 @@
               method="POST"
               action="http://localhost:5000/add_student"
               onsubmit="addStudentToDataBase(event,this)"
+              
             >
               <label class="sr-only" for="inlineFormInputName2">Name</label>
               <input
@@ -160,7 +163,8 @@
                 placeholder="Nazwa użytkownika"
                 name="username"
               />
-              <button type="submit" class="btn btn-primary mb-2">Zapisz</button>
+              <button type="submit" class="btn btn-primary mb-2" 
+              onclick="setTimeout(function(){window.location.reload();},5000);">Zapisz</button>
             </form>
           </article>
           <p class="answer answer__add"></p>
@@ -174,6 +178,7 @@
               method="DELETE"
               action="http://localhost:5000/delete_student"
               onsubmit="delete_student(event,this)"
+
             >
               <label class="sr-only" for="inlineFormInputName2">Id</label>
               <input
@@ -183,7 +188,8 @@
                 placeholder="Id studenta"
                 name="id"
               />
-              <button type="submit" class="btn btn-primary mb-2">Usuń</button>
+              <button type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},5000);">Usuń</button>
+                                                                 
             </form>
           </article>
           <p class="answer answer__delete"></p>
