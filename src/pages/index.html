@@ -163,7 +163,7 @@
                 placeholder="Nazwa użytkownika"
                 name="username"
               />
-              <button type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},20000);"
+              <button id = "add_student_id" type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},20000);"
               >Zapisz</button>
             </form>
           </article>
@@ -188,11 +188,11 @@
                 placeholder="Id studenta"
                 name="id"
               />
-              <button type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},20000);">Usuń</button>
+              <button id = "delete_student_id" type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},20000);">Usuń</button>
                                                                  
             </form>
           </article>
-          <p class="answer answer__delete"></p>
+          <p id = "delete_student_answer_id" class="answer answer__delete"></p>
         </section>
         <section class="library">
           <h1 class="table__header">Wyszukaj studenta</h1>
@@ -211,7 +211,7 @@
                 placeholder="Nazwa użytkownika"
                 name="username"
               />
-              <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+              <button id = "find_student_id" type="submit" class="btn btn-primary mb-2">Szukaj</button>
             </form>
           </article>
         </section>
