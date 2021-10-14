@@ -63,7 +63,7 @@
       <td>${id}</td>
       <td>${name}</td>
       <td>${surname}</td>
-      <td>${username}</td>`;
+      <td id="username_id">${username}</td>`;
             repositryList.innerHTML = myTemplate;
           })
           .catch((error) => {
@@ -205,13 +205,14 @@
             >
               <label class="sr-only" for="inlineFormInputName2">Username</label>
               <input
+                id = "input_username_id"
                 type="text"
                 class="form-control mb-2 mr-sm-2"
                 id="inlineFormInputName2"
                 placeholder="Nazwa użytkownika"
                 name="username"
               />
-              <button id = "find_student_id" type="submit" class="btn btn-primary mb-2">Szukaj</button>
+              <button id="find_student_id" type="submit" class="btn btn-primary mb-2">Szukaj</button>
             </form>
           </article>
         </section>
