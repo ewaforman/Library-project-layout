@@ -56,7 +56,7 @@
         })
           .then((resp) => resp.json())
           .then((resp) => {
-            const { message, name, surname, username, id } = resp;
+            const { name, surname, username, id } = resp;
             const repositryList = document.querySelector(".student__body");
             const repositryAnswer = document.querySelector(".answer__select");            
 
@@ -66,12 +66,14 @@
       <td>${surname}</td>
       <td id="username_id">${username}</td>`;
             repositryList.innerHTML = myTemplate;
-            repositryAnswer.innerHTML = message;
+            repositryAnswer.innerHTML = "Znaleziono studenta.";
           })
           .catch((error) => {
             console.log("Nie udalo sie pobrac tego studenta.");
-            // const repositryAnswer = document.querySelector(".answer__select");
-            // repositryAnswer.innerHTML = "Nie ma takiego studenta w bazie.";
+            const repositryList = document.querySelector(".student__body");
+            const repositryAnswer = document.querySelector(".answer__select");
+            repositryAnswer.innerHTML = "Nie ma takiego studenta w bazie.";
+            repositryList.innerHTML = "";
           });
         e.preventDefault();
       }
