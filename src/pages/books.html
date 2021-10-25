@@ -99,24 +99,26 @@
           .then((resp) => resp.json())
           .then((resp) => {
             const repositryList = document.querySelector(".book__body");
-            const myTemplateEmpty = ``;
-            repositryList.innerHTML = myTemplateEmpty;
-
+            const repositryAnswer = document.querySelector(".answer__select-book");
           
               const { name, surname, title, status, id } = resp;
 
               const myTemplate = `<tr>
-              <td>${id}</td>
+              <td id="book_id">${id}</td>
               <td>${name}</td>
               <td>${surname}</td>
               <td>${title}</td>
               `;
 
-              repositryList.innerHTML += myTemplate;
+              repositryList.innerHTML = myTemplate;
             }
           )
           .catch((error) => {
-            console.log("Nie udalo sie pobrac ksiazek.");
+            console.log("Nie udalo sie pobrac książek.");
+            const repositryList = document.querySelector(".book__body");
+            const repositryAnswer = document.querySelector(".answer__select-book");
+            repositryAnswer.innerHTML = "Nie ma takiej książki w bazie.";
+            repositryList.innerHTML = "";
           });
         e.preventDefault();
       }
@@ -214,10 +216,10 @@
                 placeholder="Id książki"
                 name="id"
               />
-              <button type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},5000);">Usuń</button>
+              <button id="delete_book_id" type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},5000);">Usuń</button>
             </form>
           </article>
-          <p class="answer answer__delete-book"></p>
+          <p id = "delete_book_answer_id" class="answer answer__delete-book"></p>
         </section>
         <section class="library">
           <h1 class="table__header">Wyszukaj książkę</h1>
@@ -230,15 +232,17 @@
             >
               <label class="sr-only" for="inlineFormInputName2">Id</label>
               <input
+                id="input_book_id"
                 type="text"
                 class="form-control mb-2 mr-sm-2"
                 id="inlineFormInputName2"
                 placeholder="Id książki"
                 name="id"
               />
-              <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+              <button id="find_book_id" type="submit" class="btn btn-primary mb-2">Szukaj</button>
             </form>
           </article>
+          <p id = "select_book_answer_id" class="answer answer__select-book"></p>
         </section>
   </body>
 </html>

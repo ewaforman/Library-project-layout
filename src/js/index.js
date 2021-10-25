@@ -33,7 +33,7 @@ fetch("http://127.0.0.1:5000/get_all_books")
       const repositryList = document.querySelector(".book__body");
 
       const myTemplate = `<tr>
-      <td class="col__id">${id}</td>
+      <td id="book_id" class="col__id">${id}</td>
       <td class="col__authorName">${name}</td>
       <td class="col__authorSurname">${surname}</td>
       <td>${title}</td>`;
