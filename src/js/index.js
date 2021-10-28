@@ -78,13 +78,24 @@ fetch("http://127.0.0.1:5000/get_all_hires")
       const repositryList = document.querySelector(".hire__body");
 
       const myTemplate = `<tr>
+    <td id="hire_book_id" class="col__id">${id_book}</td>
+    <td class="col__id">${id_student}</td>
+    <td>${date_hire}</td>
+    <td id="date_return_hire_id">${date_return}</td>
+  </tr>`;
+
+  const myTemplateWithoutReturn = `<tr>
     <td class="col__id">${id_book}</td>
     <td class="col__id">${id_student}</td>
     <td>${date_hire}</td>
-    <td>${date_return}</td>
+    <td></td>
   </tr>`;
+
+  if (date_return){
       repositryList.innerHTML += myTemplate;
-    }
+    } else {
+      repositryList.innerHTML += myTemplateWithoutReturn;
+  }}
   })
   .catch((error) => {
     console.log("Nie udalo sie pobrac wypozyczen.");
