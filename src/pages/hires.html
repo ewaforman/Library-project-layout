@@ -151,7 +151,7 @@
                 class="form-control mb-2 mr-sm-2"
                 id="inlineFormInputName2"
                 placeholder="Id książki"
-                name="id_book"
+                name="id_book_return"
               />
               <label class="sr-only" for="inlineFormInputName2"
                 >Data zwrotu</label
@@ -163,10 +163,10 @@
                 placeholder="Data zwrotu"
                 name="date_return"
               />
-              <button type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},5000);">Zapisz</button>
+              <button id="button_return_id" type="submit" class="btn btn-primary mb-2" onclick="setTimeout(function(){window.location.reload();},20000);">Zapisz</button>
             </form>
           </article>
-          <p class="answer answer__return"></p>
+          <p id = "answer_return_id" class="answer answer__return"></p>
         </section>
       </div>
     </div>
