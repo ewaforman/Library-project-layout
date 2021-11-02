@@ -13,8 +13,8 @@ fetch("http://127.0.0.1:5000/get_all_students")
 
       const myTemplate = `<tr>
       <td class="col__id">${id}</td>
-      <td>${name}</td>
-      <td>${surname}</td>
+      <td id="name_id">${name}</td>
+      <td id="surname_id">${surname}</td>
       <td id="username_id" class="col__user">${username}</td>`;
       repositryList.innerHTML += myTemplate;
     }
